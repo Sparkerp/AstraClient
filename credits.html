@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits | Astra Client</title>
+    <link rel="icon" href="icon.jpg">
+    <link rel="stylesheet" href="credits.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="icon.jpg" alt="Astra Logo" class="nav-logo">
+            <h2 class="logo-text">Astra Client</h2>
+        </div>
+        
+        <div class="menu-icon" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="navigation" id="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="credits.html">Credits</a>
+            <a href="updates.html">Updates</a>
+            <a href="Shop.html">Store</a>
+            <button class="btn-nav-download" onclick="window.location.href='download.html'">Download</button>
+        </nav>
+    </header>
+
+    <main class="credits-container">
+        <section class="team-box">
+            <h1 class="page-title">The Team</h1>
+            <p class="subtitle">The people behind the performance.</p>
+            
+            <div class="credits-grid">
+                <div class="credit-card featured">
+                    <div class="pfp-wrapper">
+                        <img src="PhaseX.png" alt="PhaseX" class="pfp">
+                    </div>
+                    <h2 class="name">PhaseX</h2>
+                    <p class="username">.nilsarker</p>
+                    <div class="role-badge">Main Developer</div>
+                </div>
+
+                <div class="credit-card">
+                    <div class="pfp-wrapper">
+                        <img src="Pinear.png" alt="Pinear" class="pfp">
+                    </div>
+                    <h2 class="name">Pinear</h2>
+                    <p class="username">.pinear</p>
+                    <div class="role-badge">Codeveloper</div>
+                </div>
+
+                <div class="credit-card">
+                    <div class="pfp-wrapper">
+                        <img src="Dimitris.png" alt="Dimitris" class="pfp">
+                    </div>
+                    <h2 class="name">Dimitris</h2>
+                    <p class="username">.valasellis</p>
+                    <div class="role-badge">Codeveloper (Left)</div>
+                </div>
+
+                <div class="credit-card">
+                    <div class="pfp-wrapper">
+                        <img src="Waves.png" alt="Waves" class="pfp">
+                    </div>
+                    <h2 class="name">Waves</h2>
+                    <p class="username">.waves629</p>
+                    <div class="role-badge">Web Developer</div>
+                </div>
+
+                <div class="credit-card">
+                    <div class="pfp-wrapper">
+                        <img src="Focus.png" alt="Focus" class="pfp">
+                    </div>
+                    <h2 class="name">Focus</h2>
+                    <p class="username">.focuscoder.lol</p>
+                    <div class="role-badge">Mod Developer</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.navigation a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>

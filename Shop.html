@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Astra Client</title>
+    <link rel="icon" href="icon.jpg">
+    <link rel="stylesheet" href="Shop.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="icon.jpg" alt="Astra Logo" class="nav-logo">
+            <h2 class="logo-text">Astra Client</h2>
+        </div>
+        
+        <div class="menu-icon" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="navigation" id="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="credits.html">Credits</a>
+            <a href="updates.html">Updates</a>
+            <a href="shop.html">Store</a>
+            <button class="btn-nav-download" onclick="window.location.href='download.html'">Download</button>
+        </nav>
+    </header>
+
+    <main class="shop-container">
+        <section class="content-wrapper">
+            <h1 class="marketplace-title">MARKETPLACE</h1>
+            <p class="marketplace-subtitle">Official Astra cosmetics and ranks.</p>
+
+            <div class="shop-grid">
+                <div class="shop-card">
+                    <div class="item-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h2 class="item-title">Astra Platinum</h2>
+                    <h3 class="item-price">$14.99</h3>
+                    <p class="item-desc">Exclusive badge, custom chat colors, and early access to betas.</p>
+                    <button class="btn-shop locked" id="buy-platinum">LOCKS FEB 22</button>
+                </div>
+
+                <div class="shop-card">
+                    <div class="item-icon cape">
+                        <i class="fas fa-vest"></i>
+                    </div>
+                    <h2 class="item-title">Animated Cape</h2>
+                    <h3 class="item-price">$5.00</h3>
+                    <p class="item-desc">Fully physics-based animated capes. Custom designs available.</p>
+                    <button class="btn-shop locked" id="buy-cape">LOCKS FEB 22</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Store Release Logic
+        function checkRelease() {
+            const releaseDate = new Date("Feb 22, 2026 00:00:00 UTC").getTime();
+            const now = new Date().getTime();
+
+            if (now >= releaseDate) {
+                const buttons = document.querySelectorAll('.btn-shop');
+                buttons.forEach(btn => {
+                    btn.classList.remove('locked');
+                    btn.innerHTML = "PURCHASE NOW";
+                    btn.style.cursor = "pointer";
+                    btn.style.pointerEvents = "auto";
+                    btn.onclick = () => window.location.href = 'https://yourstore.com';
+                });
+            }
+        }
+
+        checkRelease();
+    </script>
+</body>
+</html>

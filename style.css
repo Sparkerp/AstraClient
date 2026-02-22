@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+    --main-color: #162938;
+    --text-light: #ffffff;
+    --discord-blurple: #5865F2;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%), 
+                url('Background.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* --- Header & Nav --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.nav-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--glass-border);
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.navigation { display: flex; align-items: center; }
+
+/* --- NAV LINK UNDERLINE ANIMATION --- */
+.navigation a {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 30px;
+    opacity: 0.7;
+    transition: 0.3s ease;
+    position: relative; /* Anchor for underline */
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+.navigation a:hover { 
+    opacity: 1; 
+}
+
+.navigation a:hover::after {
+    width: 100%;
+}
+
+.btn-nav-download {
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-left: 35px;
+    padding: 10px 24px;
+    transition: 0.3s;
+}
+
+.btn-nav-download:hover {
+    background: #ffffff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* --- Hero --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    animation: fadeInUp 1s cubic-bezier(0.2, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-logo {
+    max-width: 160px;
+    border-radius: 40px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+    animation: float 6s ease-in-out infinite;
+}
+
+.astra-title {
+    font-size: clamp(2.8rem, 10vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin-bottom: 30px;
+    background: linear-gradient(to bottom, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-container { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
+
+/* --- HERO BUTTON UNDERLINE ANIMATION --- */
+.btn-hero { 
+    position: relative; /* Anchor for underline */
+    padding: 18px 45px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    border-radius: 14px; 
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.btn-hero::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -10px;
+    left: 0;
+    background-color: currentColor; /* Matches the text color of the button */
+    transition: width 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.btn-primary { background: #fff; color: #000; box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+.btn-discord { border: 2px solid var(--discord-blurple); color: var(--discord-blurple); }
+.btn-secondary { border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; }
+
+.btn-hero:hover { 
+    transform: translateY(-5px) scale(1.02); 
+}
+
+.btn-hero:hover::after {
+    width: 100%;
+}
+
+.version-text { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.4; }
+
+/* --- Features --- */
+.features-section { padding: 100px 8%; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 1, 0.3, 1) 0.4s forwards;
+    opacity: 0;
+}
+
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 50px 30px;
+    border-radius: 30px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 15px; }
+.card-divider { width: 40px; height: 4px; background: #fff; margin: 0 auto 20px; border-radius: 10px; opacity: 0.3; }
+.card p { color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    header { padding: 15px 5%; }
+    .menu-icon { display: block; }
+
+    .navigation {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(25px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 35px;
+        transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .navigation.active { right: 0; }
+
+    .navigation a { margin-left: 0; font-size: 1.8rem; font-weight: 800; }
+    .btn-nav-download { margin-left: 0; margin-top: 10px; width: 220px; font-size: 1.2rem; }
+
+    .cta-container { flex-direction: column; align-items: center; width: 100%; }
+    .btn-hero { width: 90%; max-width: 350px; text-align: center; }
+    
+    .astra-title { margin-top: 30px; }
+}

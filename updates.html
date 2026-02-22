@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates | Astra Client</title>
+    <link rel="icon" href="icon.jpg">
+    <link rel="stylesheet" href="updates.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="icon.jpg" alt="Astra Logo" class="nav-logo">
+            <h2 class="logo-text">Astra Client</h2>
+        </div>
+        
+        <div class="menu-icon" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="navigation" id="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="credits.html">Credits</a>
+            <a href="updates.html">Updates</a>
+            <a href="Shop.html">Store</a>
+            <button class="btn-nav-download" onclick="window.location.href='download.html'">Download</button>
+        </nav>
+    </header>
+
+    <main class="updates-container">
+        <section class="content-wrapper">
+            <h1 class="main-title">Astra Updates</h1>
+            <p class="main-subtitle">Track our progress toward the final release.</p>
+
+            <div class="update-card">
+                <div class="card-header">
+                    <h2 class="version-tag">v2.0.0-Beta – The Engine Update</h2>
+                    <p class="version-desc">Major overhaul of the rendering pipeline for maximum FPS.</p>
+                </div>
+
+                <div class="change-list">
+                    <div class="change-item">
+                        <span class="badge new">New</span>
+                        <p>Added Astra Shaders (Lightweight)</p>
+                    </div>
+                    <div class="change-item">
+                        <span class="badge new">New</span>
+                        <p>Integrated 65+ performance mods</p>
+                    </div>
+                    <div class="change-item">
+                        <span class="badge fix">Fix</span>
+                        <p>Resolved macOS M1/M2 silicon crashes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.navigation a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>

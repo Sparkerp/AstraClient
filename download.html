@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | Astra Client</title>
+    <link rel="icon" href="icon.jpg">
+    <link rel="stylesheet" href="download.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="icon.jpg" alt="Astra Logo" class="nav-logo">
+            <h2 class="logo-text">Astra Client</h2>
+        </div>
+        
+        <div class="menu-icon" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="navigation" id="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="credits.html">Credits</a>
+            <a href="updates.html">Updates</a>
+            <a href="shop.html">Store</a>
+            <button class="btn-nav-download" onclick="window.location.href='download.html'">Download</button>
+        </nav>
+    </header>
+
+    <main class="download-container">
+        <section class="download-card">
+            <div class="badge upcoming">BETA RELEASE</div>
+            <h1 class="download-title">Coming Soon</h1>
+            <p class="download-subtitle">We are finalizing the engine for the public beta release.</p>
+
+            <div class="countdown-wrapper">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <p>Days</p>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <p>Mins</p>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <p>Secs</p>
+                </div>
+            </div>
+
+            <p class="release-date-text">
+                <i class="far fa-calendar-alt"></i> Releasing February 22, 2026 | 12:00 UTC
+            </p>
+
+            <a href="https://discord.gg/b83HFWkER8" class="btn-notify" target="_blank">
+                <i class="fab fa-discord"></i> Get Notified
+            </a>
+        </section>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        function updateCountdown() {
+            const target = new Date("Feb 22, 2026 12:00:00 UTC").getTime();
+            const now = new Date().getTime();
+            const diff = target - now;
+
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = d.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
